@@ -1,20 +1,24 @@
 import axios from 'axios';
 import { Expense, ExpenseStats } from '../types';
-import exp from 'constants';
 
 const API_BASE_URL = 'htpps://localhost:5001/api';
 
+// const api = axios.create({
+//     baseURL: API_BASE_URL,
+//     headers: {
+//         'Content-Type': 'application/json',
+//     },
+// });
+
 const api = axios.create({
-    baseURL: API_BASE_URL,
-    headers: {
-        'Content-Type': 'application/json',
-    },
+    baseURL: 'http://localhost:5001/api',
+
 });
 
 export const expenseAPI = {
     // Get all expenses
     getExpenses: async (): Promise<Expense[]> => {
-        const response = await api.get('/expenses/');
+        const response = await api.get('/expenses');
         return response.data;
     },
 
